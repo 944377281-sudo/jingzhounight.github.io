@@ -370,8 +370,8 @@
         <span>中密</span>
         <span>高密</span>
     </div>
-    <div id="legendMode" class="mode-badge">当前模式: 日常夜间 (蓝绿橙)</div>
-    <div style="margin-top:5px; font-size:10px; opacity:0.8;">🌌 静谧呼吸光点 | 节日热力更炽热</div>
+    <div id="legendMode" class="mode-badge">当前模式: 日常夜间</div>
+    <div style="margin-top:5px; font-size:10px; opacity:0.8;">🌌 </div>
 </div>
 
 <div class="info" id="info">🌙 静谧夜游系统已开启 · 点击动态光点查看热度详情</div>
@@ -458,11 +458,11 @@
         const titleMode = document.getElementById('modeIndicator');
         if (mode === 'daily') {
             gradientDiv.style.background = "linear-gradient(to right, #0000ff, #00aaff, #00ffaa, #ffff44, #ff8844, #ff3366)";
-            modeSpan.innerHTML = "当前模式: 日常夜间 (静谧蓝绿→暖橙)";
+            modeSpan.innerHTML = "当前模式: 日常夜间 ";
             if (titleMode) titleMode.innerText = "🌙 日常夜间";
         } else {
             gradientDiv.style.background = "linear-gradient(to right, #ff9944, #ff6633, #ff2244, #e6005c, #c2185b, #9b2e8a)";
-            modeSpan.innerHTML = "当前模式: 节假日夜间 (热烈橙→紫红) 人流激增";
+            modeSpan.innerHTML = "当前模式: 节假日夜间";
             if (titleMode) titleMode.innerText = "🎉 节假日夜间";
         }
     }
@@ -542,11 +542,11 @@
         if (pointsVisible) {
             map.remove(markers);
             pointsVisible = false;
-            document.getElementById("info").innerHTML = "🌙 动态光点已隐藏 (热力图层保持)";
+            document.getElementById("info").innerHTML = "🌙 ";
         } else {
             map.add(markers);
             pointsVisible = true;
-            document.getElementById("info").innerHTML = "✨ 静谧呼吸光点已显示，点击查看各景点夜间热度";
+            document.getElementById("info").innerHTML = "✨ ";
         }
     }
     
@@ -561,7 +561,7 @@
         }
     }
     
-    // 日常夜间热力 (静谧蓝绿主调)
+    // 日常夜间热力 
     function showNightHeat() {
         if (!heatmap) return;
         const heatData = points.map(p => ({ lng: p.lng, lat: p.lat, count: p.nightCount }));
@@ -575,7 +575,7 @@
         heatmap._heatmapVisible = true;
         updateLegend('daily');
         const top = [...points].sort((a,b) => b.nightCount - a.nightCount)[0];
-        document.getElementById("info").innerHTML = `🌙 日常夜间热力已加载 | 夜游峰值: ${top.name} (热度 ${top.nightCount})<br>🎉 点击“节假日夜间热力”查看假期夜游热烈分布（橙紫渐变）。`;
+        document.getElementById("info").innerHTML = `🌙 日常夜间热力已加载 | 夜游峰值: ${top.name} (热度 ${top.nightCount})<br>🎉）。`;
     }
     
     // 节假日夜间热力 (热烈橙紫)
@@ -654,7 +654,7 @@
         // 确保动态光点随着缩放依然优雅，同时热力半径自适应
         setTimeout(() => {
             const topNight = [...points].sort((a,b) => b.nightCount - a.nightCount)[0];
-            document.getElementById("info").innerHTML = `🌙 荆州古城夜间静谧热力系统 | 日常夜游冠军: ${topNight.name}<br>✨ 动态呼吸光点 + 双模式热力 (日常/节假日) 点击光点获得详细排名。`;
+            document.getElementById("info").innerHTML = `🌙 荆州古城夜间静谧热力系统 | 日常夜游冠军: ${topNight.name}<br>✨。`;
         }, 700);
     }
     
